@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.19)
+
+find_package(Eigen REQUIRED)
+
+set(PACKAGE_NAME Daikon)
+set(${PACKAGE_NAME}_FOUND TRUE)
+message(STATUS "Found ${PACKAGE_NAME}!")
+
+set(${PACKAGE_NAME}_SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/../../src/daikon")
+set(${PACKAGE_NAME}_INCLUDE_DIRS 
+    ${${PACKAGE_NAME}_SOURCE_DIR}
+    ${Eigen_INCLUDE_DIRS}
+    )
+
+
+set(${PACKAGE_NAME}_SOURCES  ${Eigen_SOURCES})
+set(${PACKAGE_NAME}_LIBS ${Eigen_LIBS})
+
+
+include(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(${PACKAGE_NAME} REQUIRED_VARS ${PACKAGE_NAME}_FOUND)
